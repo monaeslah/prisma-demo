@@ -19,17 +19,16 @@ datasource db {
 // ...
 
 model Book {
-  id         String   @id @default(cuid())
-  title      String
-  year       Int
-  summary    String?
-  quantity   Int      @default(0)
-  genre      String[]
-  authorName String
-  createdAt  DateTime @default(now())
-  updatedAt  DateTime @updatedAt
-  authorId   String //  <== ADD
-  author     Author   @relation(fields: [authorId], references: [id]) //  <== ADD
+  id        String   @id @default(cuid())
+  title     String
+  year      Int
+  summary   String?
+  quantity  Int      @default(0)
+  genre     String[]
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+  authorId  String //  <== ADD
+  author    Author   @relation(fields: [authorId], references: [id]) //  <== ADD
 }
 
 model Author {
