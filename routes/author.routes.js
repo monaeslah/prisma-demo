@@ -26,5 +26,17 @@ router.post('/authors', (req, res, next) => {
       res.status(500).json({ message: 'Error creating new author' })
     })
 })
+router.get('/authors', (req, res, next) => {
+  prisma.author
+    .findMany()
+    .then(authors => {
+      console.log('Authors retrieved:', authors)
+      res.status(200).json(authors)
+    })
+    .catch(err => {
+      console.error('Error retrieving authors:', err)
+      res.status(500).json({ message: 'Error retrieving authors' })
+    })
+})
 
 module.exports = router
